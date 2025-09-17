@@ -1,4 +1,4 @@
-use songspot_core::run_app;
+use songspot_core::ui::run_app;
 
 fn main() {
     run_app();

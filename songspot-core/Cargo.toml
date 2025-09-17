@@ -8,3 +8,5 @@ relm4 = "0.10.0"
 relm4-components = "0.10.0"
 gtk = { version = "0.10.1", package = "gtk4" }
 adw = { version = "0.8", package = "libadwaita" }
+cpal = "0.16.0"
+hound = "3.5.1"
