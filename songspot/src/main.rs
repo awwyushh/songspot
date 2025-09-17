@@ -1,3 +1,5 @@
+use songspot_core::run_app;
+
 fn main() {
-    println!("Hello, world!");
+    run_app();
 }
