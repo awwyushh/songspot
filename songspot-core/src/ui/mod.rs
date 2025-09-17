@@ -2,14 +2,13 @@
 use relm4::prelude::*;
 use adw::prelude::*;
 use crate::audio::AudioRecorder;
+use gio::resources_register_include;
 
-// App state
 pub struct App {
     is_listening: bool,
     audio_recorder: AudioRecorder,
 }
 
-// App messages
 #[derive(Debug)]
 pub enum Msg {
     ToggleListening,
@@ -47,8 +46,9 @@ impl SimpleComponent for App {
                     set_vexpand: true,
 
                     gtk::Image {
-                        set_icon_name: Some("audio-x-generic-symbolic"),
-                        set_pixel_size: 64,
+			#[watch]
+                        set_resource: Some("/me/ayushshukla/songspot/anime_girl.jpg"),
+                        set_pixel_size: 128,
                         set_margin_bottom: 20,
                     },
 
