@@ -1,8 +1,10 @@
-// use relm4::{adw, gtk, prelude::*, RelmApp};
 use relm4::prelude::*;
 use adw::prelude::*;
 use crate::audio::AudioRecorder;
-use gio::resources_register_include;
+use gio::prelude::*;
+
+// Include the compiled resource
+static RESOURCES: &[u8] = include_bytes!(concat!(env!("OUT_DIR"), "/resources.gresource"));
 
 pub struct App {
     is_listening: bool,
@@ -46,7 +48,6 @@ impl SimpleComponent for App {
                     set_vexpand: true,
 
                     gtk::Image {
-			#[watch]
                         set_resource: Some("/me/ayushshukla/songspot/anime_girl.jpg"),
                         set_pixel_size: 128,
                         set_margin_bottom: 20,
@@ -118,6 +119,11 @@ impl SimpleComponent for App {
 }
 
 pub fn run_app() {
+    // Register the GResource
+    let resource = gio::Resource::from_data(&glib::Bytes::from_static(RESOURCES))
+        .expect("Could not load gresource file");
+    gio::resources_register(&resource);
+    
     adw::init().expect("Failed to initialize libadwaita");
     let app = RelmApp::new("com.example.songspot");
     app.run::<App>(());

@@ -11,6 +11,8 @@ adw = { version = "0.8", package = "libadwaita" }
 cpal = "0.16.0"
 hound = "3.5.1"
 gio = "0.21.2"
+glib = "0.21.2"
 
 [build-dependencies]
 glib-build-tools = "0.21.0"
+
